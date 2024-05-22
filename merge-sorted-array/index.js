@@ -1,21 +1,25 @@
 var merge = function (nums1, m, nums2, n) {
-	let countM = 0;
-	let countN = 0;
+	// Start from the end of both arrays
+	let i = m - 1; // Last index of initial elements in nums1
+	let j = n - 1; // Last index of nums2
+	let k = m + n - 1; // Last index of nums1
 
-	while (countM < m && countN < n) {
-		let idx = countM;
-		// Skip over 0s, remove them from arrays:
-		if (nums1[idx] <= 0) {
-			nums1.splice(idx, 1);
-			idx += 1;
+	// Merge nums2 into nums1 from the end
+	while (j >= 0) {
+		//Compare both ints in desc order, ie the two greatest numbers in both arrays, add the larger of the two to the
+		//current index of nums1, and decrement the index of the array from which we took the integer
+		if (i >= 0 && nums1[i] > nums2[j]) {
+			nums1[k] = nums1[i];
+			i--;
+		} else {
+			nums1[k] = nums2[j];
+			j--;
 		}
-
-		if (nums1[idx] <= nums2[countN]) {
-			countM += 1;
-		} else if (nums1[idx] > nums2[countN]) {
-			nums1.splice(idx, 0, nums2[countN]);
-			countN++;
-		}
+		k--;
 	}
-	console.log(nums1);
 };
+
+// Example usage:
+let nums1 = [1, 2, 3, 0, 0, 0];
+let m = 3;
+let nums2 = [2, 5, 6];

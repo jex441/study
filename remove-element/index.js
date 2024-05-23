@@ -13,5 +13,5 @@ var removeElement = function (nums, val) {
 		}
 		index--;
 	}
-	console.log(count + nums);
+	return count;
 };

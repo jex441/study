@@ -1,5 +1,5 @@
 const compress = (s) => {
-	let string = "";
+	let string = [];
 	let k = 0;
 	let j = 0;
 
@@ -9,12 +9,12 @@ const compress = (s) => {
 		} else {
 			let count = k - j;
 			if (count === 1) {
-				string += s[j];
+				string.push(s[j]);
 			} else {
-				string += count + s[j];
+				string.push(count, s[j]);
 			}
 			j = k;
 		}
 	}
-	return string;
+	return string.join("");
 };

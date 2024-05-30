@@ -1,5 +1,4 @@
 const anagrams = (s1, s2) => {
-	// make a hash map
 	let count = {};
 	for (let char of s1) {
 		if (!count[char]) {
@@ -22,9 +21,4 @@ const anagrams = (s1, s2) => {
 		}
 	}
 	return true;
-	console.log(count);
-};
-
-module.exports = {
-	anagrams,
 };

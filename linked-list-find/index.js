@@ -9,3 +9,14 @@ const linkedListFind = (head, target) => {
 
 	return false;
 };
+
+const linkedListFindRecursive = (head, target) => {
+	if (!head) {
+		return false;
+	}
+	if (head.val === target) {
+		return true;
+	} else {
+		return linkedListFindRecursive(head.next, target);
+	}
+};

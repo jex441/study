@@ -20,26 +20,11 @@ function groupTransactions(transactions) {
 		countA = parseInt(countA);
 		countB = parseInt(countB);
 
-		return itemA.localeCompare(itemB) || countB - countA;
+		if (countA === countB) {
+			return itemA.localeCompare(itemB);
+		} else {
+			return countB - countA;
+		}
 	});
 	return output;
 }
-
-console.log(
-	groupTransactions([
-		"carrot",
-		"carrot",
-		"artichoke",
-		"zucchini",
-		"beet",
-		"prune",
-		"carrot",
-		"broccoli",
-		"prune",
-		"carrot",
-		"tomato",
-		"beet",
-		"tomato",
-		"pumpkin",
-	])
-);

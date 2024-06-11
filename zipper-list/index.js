@@ -1,28 +1,29 @@
 const zipperLists = (head1, head2) => {
 	let count = 0;
-	let mergedList = head1;
-	let current1 = head1.next;
-	let current2 = head2;
+	let currentNode = head1;
+	let pointer1 = head1.next;
+	let pointer2 = head2;
 
-	while (current1 !== null && current2 !== null) {
+	while (pointer1 !== null && pointer2 !== null) {
 		if (count % 2 === 0) {
-			// change current merged list's next to head2's current node
-			mergedList.next = current2;
-			// if even, increment head2's current node one down
-			current2 = current2.next;
+			// if even, change current node's next to head2's current
+			currentNode.next = pointer2;
+			// increment head2's current node one down
+			pointer2 = pointer2.next;
 		} else {
-			// change current merged list's next to head1's current node
-			mergedList.next = current1;
-			// if odd, increment head1's current node one down
-			current1 = current1.next;
+			// if odd, change current node's next to head1's current
+			currentNode.next = pointer1;
+			// increment head1's current node one down
+			pointer1 = pointer1.next;
 		}
-		// increment merged list to the new next node
-		mergedList = mergedList.next;
+		// increment current node to the new next node
+		currentNode = currentNode.next;
+		// increment count to alternate list
 		count += 1;
 	}
 
-	if (current1 !== null) mergedList.next = current1;
-	if (current2 !== null) mergedList.next = current2;
+	if (pointer1 !== null) currentNode.next = pointer1;
+	if (pointer2 !== null) currentNode.next = pointer2;
 
 	return head1;
 };
